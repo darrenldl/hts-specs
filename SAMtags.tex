@@ -264,8 +264,11 @@ The Cell Barcode helps identify when reads come from different cells in a ``sing
 
 \item
 The UMI is intended to identify the molecule (single- or double-stranded) at the time that the barcode was introduced.
-This can be used to inform duplicate marking and consensus calling in ultra-deep sequencing and in the presence of ``sister'' duplicates (templates from opposite strands of the same double-stranded molecule).
-It can also be used to (informatically) link reads that were generated from the same long molecule.
+This can be used to inform duplicate marking and make consensus calling in ultra-deep sequencing. 
+Additionally, the UMI can also be used to (informatically) link reads that were generated from the same long molecule, enabling long-range phasing and better informed mapping. 
+In some experimental setups opposite strands of the same double-stranded DNA molecule get related barcodes. 
+These ``sister'' duplicates can also be considered duplicates.
+Multiple UMIs can be added by a protocol, possibly at different time-points, which means that specific knowledge of the protocol may be needed in order to analyze the resulting data correctly. 
 \end{itemize}
 
 \begin{description}
