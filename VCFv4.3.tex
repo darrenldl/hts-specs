@@ -71,9 +71,11 @@ The microsatellite calls are unphased.
 
 \subsection{Character encoding, non-printable characters and characters with special meaning}
 \label{character-encoding}
-The character encoding of VCF files is UTF-8. UTF-8 is a multi-byte character encoding that is a strict superset of 7-bit ASCII and has the property that none of the bytes in any multi-byte characters are 7-bit ASCII bytes.
+The character encoding of VCF files is UTF-8.
+UTF-8 is a multi-byte character encoding that is a strict superset of 7-bit ASCII and has the property that none of the bytes in any multi-byte characters are 7-bit ASCII bytes.
 As a result, most software that processes VCF files does not have to be aware of the possible presence of multi-byte UTF-8 characters.
-Note that non-printable characters U+0000-U+0008, U+000B-U+000C, U+000E-U+001F are disallowed. Line separators must be CR+LF or LF and they are allowed only as line separators at end of line.
+Note that non-printable characters U+0000-U+0008, U+000B-U+000C, U+000E-U+001F are disallowed.
+Line separators must be CR+LF or LF and they are allowed only as line separators at end of line.
 Characters with special meaning (such as field delimiters ';' in INFO or ':' FORMAT fields) must be represented using the capitalized percent encoding:
 
 \begingroup\footnotesize
@@ -96,7 +98,8 @@ For the Integer type, the values from $-2^{31}$ to $-2^{31}+7$ cannot be stored 
 
 \subsection{Meta-information lines}
 File meta-information is included after the \#\# string and must be key=value pairs.
-Meta-information lines are optional, but if they are present then they must be completely well-formed. Note that BCF, the binary counterpart of VCF, requires that all entries are present.
+Meta-information lines are optional, but if they are present then they must be completely well-formed.
+Note that BCF, the binary counterpart of VCF, requires that all entries are present.
 It is recommended to include meta-information lines describing the entries used in the body of the VCF file.
 
 All structured lines that have their value enclosed within "$<>$" require an ID which must be unique within their type.
@@ -105,7 +108,8 @@ For example:
 \begin{verbatim}
 ##INFO=<ID=ID,Number=number,Type=type,Description="description",Source="description",Version="128">
 \end{verbatim}
-In the above example, the extra fields of ``Source'' and ``Version'' are provided. Optional fields must be stored as strings even for numeric values.
+In the above example, the extra fields of ``Source'' and ``Version'' are provided.
+Optional fields must be stored as strings even for numeric values.
 
 It is recommended in VCF and required in BCF that the header includes tags describing the reference and contigs backing the data contained in the file.
 These tags are based on the SQ field from the SAM spec; all tags are optional (see the VCF example above).
@@ -114,7 +118,8 @@ Meta-information lines can be in any order with the exception of `fileformat` wh
 
 
 \subsubsection{File format}
-A single `fileformat' line is always required, must be the first line in the file, and details the VCF format version number. For VCF version 4.3, this line is:
+A single `fileformat' line is always required, must be the first line in the file, and details the VCF format version number.
+For VCF version 4.3, this line is:
 
 \begin{verbatim}
 ##fileformat=VCFv4.3
@@ -352,7 +357,8 @@ Fixed fields are:
   \end{table}
 
   The exact format of each INFO sub-field should be specified in the meta-information (as described above).
-  Example for an INFO field: DP=154;MQ=52;H2. Keys without corresponding values may be used to indicate group membership (e.g. H2 indicates the SNP is found in HapMap 2).
+  Example for an INFO field: DP=154;MQ=52;H2.
+  Keys without corresponding values may be used to indicate group membership (e.g. H2 indicates the SNP is found in HapMap 2).
   See Section~\ref{sv-info-keys} for additional reserved INFO sub-fields used to encode structural variants.
 \end{enumerate}
 
@@ -597,7 +603,8 @@ However, the alternate allele assembly file may contain additional information a
 \end{verbatim}
 \normalsize
 These keys are analogous to GT/GQ/GL/GP and are provided for genotyping imprecise events by copy number (either because there is an unknown number of alternate alleles or because the haplotypes cannot be determined).
-CN specifies the integer copy number of the variant in this sample. CNQ is encoded as a phred quality $-10log_{10}$ p(copy number genotype call is wrong).
+CN specifies the integer copy number of the variant in this sample.
+CNQ is encoded as a phred quality $-10log_{10}$ p(copy number genotype call is wrong).
 CNL specifies a list of $log_{10}$ likelihoods for each potential copy number, starting from zero.
 CNP is 0 to 1-scaled copy number posterior probabilities (and otherwise defined precisely as the CNL field), intended to store imputed genotype probabilities.
 When possible, GT/GQ/GL/GP should be used instead of (or in addition to) these keys.
